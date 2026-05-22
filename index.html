@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Yulia - Mobile Zine 2026</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;800&display=swap');
+
+        :root {
+            --bg-light: #f9f9f9;
+            --main-black: #111111;
+            --accent-pink: #ff3399;
+            --muted-gold: #d5be9b;
+            --dark-red: #4a0e17;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            /* Убирает серое выделение при тапе на iPhone */
+            -webkit-tap-highlight-color: transparent; 
+        }
+
+        body {
+            background-color: var(--bg-light);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--main-black);
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            overflow-x: hidden;
+        }
+
+        /* Мобильный контейнер в один экран по ширине */
+        .phone-wrapper {
+            width: 100%;
+            max-width: 430px; /* Ширина топовых iPhone Pro Max */
+            margin: 0 auto;
+            background: #fff;
+        }
+
+        section {
+            padding: 40px 20px;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        /* --- 1. HERO SECTION --- */
+        .hero-section {
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .main-title {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 3.2rem;
+            line-height: 0.9;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .main-title span {
+            display: block;
+            font-style: italic;
+            font-weight: 700;
+            color: var(--main-black);
+        }
+
+        .hero-desc {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 30px;
+            padding: 0 10px;
+            text-align: justify;
+        }
+
+        /* Инста-коллаж: 2х2 аккуратных поста */
+        .insta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .insta-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 6px;
+            border-radius: 4px;
+        }
+
+        .insta-card img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            display: block;
+            border-radius: 2px;
+        }
+
+        /* --- 2. 10 FACTS --- */
+        .facts-section {
+            background: #fff;
+        }
+
+        .facts-section h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            letter-spacing: -0.5px;
+        }
+
+        .fact-row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .fact-num {
+            font-weight: 800;
+            font-size: 0.9rem;
+            color: #fff;
+            background: var(--accent-pink);
+            padding: 3px 6px;
+            margin-right: 12px;
+            border-radius: 3px;
+            min-width: 26px;
+            text-align: center;
+        }
+
+        .fact-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* --- 3. PINTEREST BOARD --- */
+        .pinterest-section h2 {
+            font-family: 'Bodoni Moda', serif;
+            font-style: italic;
+            font-size: 1.4rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .pin-board {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .pin {
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+
+        .pin img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .p-long { height: 180px; }
+        .p-short { height: 120px; }
+
+        /* --- 4. CAN'T LIVE WITHOUT --- */
+        .cant-live-header {
+            background: var(--muted-gold);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .icons-vibe-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 30px 10px;
+        }
+
+        .icon-box {
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .icon-box svg {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 6px;
+            stroke: #111;
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        /* --- 5. EXCLUSIVE INTERVIEW --- */
+        .interview-header {
+            background: var(--dark-red);
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.5rem;
+        }
+
+        .interview-content {
+            padding: 25px 15px;
+        }
+
+        .qa-block {
+            margin-bottom: 18px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 10px;
+        }
+
+        .qa-block h3 {
+            font-size: 0.85rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .qa-block p {
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        /* --- 6. WHAT THEY THINK ABOUT ME --- */
+        .polka-dot-bg {
+            background-image: radial-gradient(#111 12%, transparent 13%);
+            background-size: 20px 20px;
+            background-color: #fff;
+            padding: 40px 20px;
+        }
+
+        .polka-dot-bg h2 {
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-align: center;
+            background: #fff;
+            display: inline-block;
+            padding: 4px 10px;
+        }
+
+        .sticker-quote {
+            background: #fff;
+            border: 1.5px dashed #aaa;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            font-style: italic;
+            font-size: 0.85rem;
+            box-shadow: 3px 3px 0px var(--main-black);
+        }
+
+        /* --- 7. HER VIBE (Мобильный коллаж) --- */
+        .vibe-section {
+            background: #fdfdfd;
+            height: 420px;
+            position: relative;
+        }
+
+        .vibe-title {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 0.9;
+        }
+
+        .collage-img {
+            position: absolute;
+            border: 1px solid #000;
+            padding: 4px;
+            background: #fff;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.05);
+        }
+
+        .img-1 { top: 20px; right: 15px; width: 140px; transform: rotate(4deg); }
+        .img-2 { bottom: 30px; left: 15px; width: 160px; transform: rotate(-3deg); }
+        .img-3 { bottom: 60px; right: 20px; width: 130px; transform: rotate(6deg); }
+
+        .bubble-meme {
+            position: absolute;
+            background: #ffde00;
+            border: 1.5px solid #000;
+            padding: 4px 8px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            top: 160px;
+            left: 20px;
+            transform: rotate(-8deg);
+        }
+
+        /* --- 8. FINAL PAGE --- */
+        .final-section {
+            background: #ff54b0;
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .big-year {
+            font-size: 6rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -3px;
+            margin-bottom: 10px;
+        }
+
+        .final-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-wrapper">
+
+        <section class="hero-section">
+            <h1 class="main-title">Who’s<br><span>that girl?</span></h1>
+            <p class="hero-desc">
+                <strong>Yulia</strong> — the brightest personality, who is not afraid to make herself known. I'm so glad I was born that way. I have the best life, which I built brick by brick every year.
+            </p>
+            <div class="insta-grid">
+                <div class="insta-card"><img src="https://via.placeholder.com/200x200/e0e0e0/666666?text=Photo+1" alt="Yulia"></div>
+                <div class="insta-card"><img src="https://via.placeholder.com/200x200/d0d0d0/555555?text=Photo+2" alt="Yulia"></div>
+                <div class="insta-card"><img src="https://via.placeholder.com/200x200/c0c0c0/444444?text=Photo+3" alt="Yulia"></div>
+                <div class="insta-card"><img src="https://via.placeholder.com/200x200/b0b0b0/333333?text=Photo+4" alt="Yulia"></div>
+            </div>
+        </section>
+
+        <section class="facts-section">
+            <h2>10 Фактов о тебе</h2>
+            <div class="fact-row"><div class="fact-num">01</div><div class="fact-text">I can't live without chocolate</div></div>
+            <div class="fact-row"><div class="fact-num">02</div><div class="fact-text">한국어를 배우요 (Изучаю корейский)</div></div>
+            <div class="fact-row"><div class="fact-num">03</div><div class="fact-text">Dancing is my therapy</div></div>
+            <div class="fact-row"><div class="fact-num">04</div><div class="fact-text">Cook divinely</div></div>
+            <div class="fact-row"><div class="fact-num">05</div><div class="fact-text">Not afraid of change</div></div>
+            <div class="fact-row"><div class="fact-num">06</div><div class="fact-text">It doesn't matter at all about serious things</div></div>
+            <div class="fact-row"><div class="fact-num">07</div><div class="fact-text">Second language is already part of me</div></div>
+            <div class="fact-row"><div class="fact-num">08</div><div class="fact-text">Favorite animal is a cat</div></div>
+            <div class="fact-row"><div class="fact-num">09</div><div class="fact-text">Half Russian, half Ukrainian</div></div>
+            <div class="fact-row"><div class="fact-num">10</div><div class="fact-text">Can't swim</div></div>
+        </section>
+
+        <section class="pinterest-section">
+            <h2>Она в стиле Pinterest</h2>
+            <div class="pin-board">
+                <div class="pin p-long"><img src="https://via.placeholder.com/180x250/333?text=Aesthetic" alt="Pin"></div>
+                <div class="pin p-short"><img src="https://via.placeholder.com/180x150/555?text=Vibe" alt="Pin"></div>
+                <div class="pin p-short"><img src="https://via.placeholder.com/180x150/777?text=Style" alt="Pin"></div>
+                <div class="pin p-long"><img src="https://via.placeholder.com/180x250/999?text=Dance" alt="Pin"></div>
+            </div>
+        </section>
+
+        <div class="cant-live-header">She Can't Live Without</div>
+        <section style="padding:0;">
+            <div class="icons-vibe-grid">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 9l12-2M9 18c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm12-2c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/></svg>
+                    <div>Music</div>
+                </div>
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 7h14M5 12h14M12 2v20"/></svg>
+                    <div>Choco</div>
+                </div>
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg>
+                    <div>Insta</div>
+                </div>
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    <div>Dance</div>
+                </div>
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    <div>Family</div>
+                </div>
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M16 3.13a4 4 0 0 1 0 7.75M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <div>Friends</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="interview-header">Exclusive interview</div>
+        <div class="interview-content">
+            <div class="qa-block">
+                <h3>Who would you like to be as a child?</h3>
+                <p>If in kindergarten, then as a veterinarian.</p>
+            </div>
+            <div class="qa-block">
+                <h3>What do you value in people?</h3>
+                <p>Honesty and kindness.</p>
+            </div>
+            <div class="qa-block">
+                <h3>What is love to you?</h3>
+                <p>This is the support and full acceptance of a person.</p>
+            </div>
+            <div class="qa-block">
+                <h3>What are your hobbies?</h3>
+                <p>Dancing, cooking, learning languages and history.</p>
+            </div>
+        </div>
+
+        <section class="polka-dot-bg">
+            <h2>What they think?</h2>
+            <div class="sticker-quote">«Уверенность, танцы, чистота»</div>
+            <div class="sticker-quote">«Утонченная, скромная, смелая»</div>
+            <div class="sticker-quote">«Лапочка, красивая, ангельская»</div>
+        </section>
+
+        <section class="vibe-section">
+            <div class="vibe-title">HER<br>VIBE</div>
+            <div class="bubble-meme">Не щас, а сейчас же!</div>
+            
+            <div class="collage-img img-1"><img src="https://via.placeholder.com/130x100/faa?text=Perfume" style="width:100%;"></div>
+            <div class="collage-img img-2"><img src="https://via.placeholder.com/150x150/afa?text=Meme" style="width:100%;"></div>
+            <div class="collage-img img-3"><img src="https://via.placeholder.com/120x160/aaf?text=Outfit" style="width:100%;"></div>
+        </section>
+
+        <section class="final-section">
+            <div class="big-year">2026</div>
+            <div class="final-text">
+                new year, same me.<br>
+                <span style="font-size:0.85rem; font-weight:400; opacity:0.8;">since when was i ever the problem?</span>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
